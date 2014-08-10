@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Project Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    <!--<div ng-include="'webapp/common/layout/sidebar.html'"></div>-->
+    <div class="page-wrapper">
+        <!--<div ng-include="'webapp/common/layout/topnav.html'"></div>-->
+        <div ng-view style="height:100%;height: calc(100% - 100px);"></div>
+    </div>
+    <script src="Scripts/jquery/jquery-2.1.1.js"></script>
+    <script src="Scripts/bootstrap/bootstrap.js"></script>
+    <script src="Scripts/angular/angular.js"></script>
+    <script src="Scripts/angular/angular-route.js"></script>
+    <script src="Scripts/angular/angular-animate.js"></script>
+    <script src="Scripts/angular/angular-resource.js"></script>
+    <script src="Scripts/jquery/jquery.Jcrop.js"></script>
+    <script src="webapp/common/pm.common.js"></script>
+    <script src="webapp/project/pm.manage.js"></script>
+    <script src="webapp/project/dashboard/pm.manage.dashboard.js"></script>    
+    <script>
+        (function () {
+            if (!window.console) {
+                window.console = {
+                    log: function () { }
+                }
+            }
+
+            "use strict";
+            var baseUrl = 'http://localhost:4679/api';
+            angular.element(document).ready(function () {
+                var module = angular.module('pm.common');
+                module.constant('$config', {
+                    RESOURCE_HOST: baseUrl,
+                    API_ENDPOINT: baseUrl + '/'
+                });
+                angular.bootstrap(document, ['pm.manage']);
+            });
+        })();
+    </script>
+</body>
+</html>

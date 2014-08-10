@@ -1,0 +1,42 @@
+﻿<div class="container">
+    <h1>Document Scanner</h1>
+    <div class="row">
+        <div id="create-project" class="col-md-4">
+            <div>
+                <h3>Create Project</h3>
+            </div>
+            <div class="form-group">
+                <label for="clientName">File Name:</label>
+                <input id="clientName" class="form-control" ng-model="clientName" placeholder="Enter File Name" type="text" value="" />
+            </div>
+            <div class="form-group" ng-hide="isImageLoaded">
+                <label for="projectFile">Select Project File:</label>
+                <input id="projectFile" type="file" accept="application/pdf" file="file.input" fileuploader /> <!--file="file.input" -->
+            </div>
+            <div class="form-group" ng-hide="isImageLoaded">
+                <button type="button" class="btn btn-default" ng-click="upload()">Upload</button>
+            </div>
+            <div ng-show="isImageLoaded">
+                <textarea ng-model="scannedText" rows="6" cols="40" />
+                <button class="btn btn-default" type="button" ng-click="getText()">Read Selection</button>
+
+                <ng-transclude></ng-transclude>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div ng-show="isWebRequest">
+                <img src="Images/loader.gif" alt="loading ..." />
+            </div>
+            <div>
+                <ul class="pagination">
+                    <li ng-repeat="page in getPageCount() track by $index" ng-click="getPage($index+1)"><a href="">{{$index+1}}</a></li>
+                </ul>
+            </div>
+            <div ng-show="isImageLoaded">
+                <img image-loader ng-src="{{firstPage}}" source="firstPage" result="file.coords" allow-rect="allowRect" width="750px" height="900px" style="border: 1px solid #ccc" />
+                <!--<img ng-src="{{firstPage}}" width="500px" height="500px"/>-->
+            </div>
+
+        </div>
+    </div>
+</div>
