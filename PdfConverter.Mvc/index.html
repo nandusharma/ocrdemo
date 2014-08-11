@@ -8,11 +8,17 @@
     <link href="Content/style.css" rel="stylesheet" />
 </head>
 <body>
-    <!--<div ng-include="'webapp/common/layout/sidebar.html'"></div>-->
+    <header class="container-fluid">
+        <div class="container">
+            <h2><span class="glyphicon glyphicon-list-alt"></span> Document Scanner</h2>
+        </div>
+    </header>
     <div class="page-wrapper">
-        <!--<div ng-include="'webapp/common/layout/topnav.html'"></div>-->
         <div ng-view style="height:100%;height: calc(100% - 100px);"></div>
     </div>
+    <footer>
+
+    </footer>
     <script src="Scripts/jquery/jquery-2.1.1.js"></script>
     <script src="Scripts/bootstrap/bootstrap.js"></script>
     <script src="Scripts/angular/angular.js"></script>

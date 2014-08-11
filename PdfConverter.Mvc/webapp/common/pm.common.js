@@ -20,6 +20,8 @@
     module.directive('imageLoader', imageLoader);
     module.directive('imgCropped', imgCropped);
     module.directive('imageToText', ['$textService', imageToText]);
+    module.directive('scanner', scannerDirective);
+    module.directive('scannerField', scannerFieldDirective);
 
     module.provider('Api', apiProvider);
 
@@ -619,6 +621,43 @@
                 //        $scope.saveCallback();
                 //    });
                 //};
+            }
+        }
+    }
+
+    function scannerDirective() {
+        return {
+            restrict: 'E',
+            transclude: true,
+            controller: 'ProjectDashboardController',
+            templateUrl: '/webapp/project/dashboard/scanner-template.html',
+            link: function (scope, elem, attrs, ctrl, transcludeFn) {
+                transcludeFn(scope, function (clone) {
+                    elem.find('.transcluded-content').append(clone);
+                });
+            }
+        };
+    }
+
+    function scannerFieldDirective() {
+        var editorTemplate =
+        '<div>' +
+            '<input type="text" ng-model="result" />' +
+            '<a ng-click="scanText()"><span class="glyphicon glyphicon-camera scan"></span></button>' +
+        '</div>'
+        return {
+            restrict: "E",
+            replace: true,
+            template: editorTemplate,
+            require: '^scanner',
+            scope: true,
+            link: function (scope, elem, attrs, parent) {
+                scope.result = '';                scope.scanText = function () {
+                    parent.getCurrentText(function (data) {
+                        scope.result = data;
+                    }, function () {
+                    });
+                }
             }
         }
     }

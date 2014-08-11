@@ -121,7 +121,16 @@
 				});
 		};
 
-		$scope.getText = function () {
+		$scope.onTextRead = function (data) {
+		    $scope.scannedText = JSON.parse(data);
+		    //$scope.isWebRequest = false;
+		};
+
+		$scope.onTextReadError = function (data) {
+		    $scope.isWebRequest = false;
+		};
+
+		/*$scope.getText = function () {
 		    $scope.isWebRequest = true;
 			return $http.post(
 				$config.API_ENDPOINT
@@ -147,8 +156,31 @@
 				}).error(function () {
 				    $scope.isWebRequest = false;
 				});
-		};
+		};*/
 
+		this.getCurrentText = $scope.getText = function (onSuccess, onFail) {
+		    debugger;
+		    //$scope.isWebRequest = true;
+		    return $http.post(
+				$config.API_ENDPOINT
+				+ 'project/imagetotext?project=' + $scope.projectName
+				+ '&pageNumber=' + $scope.currentPage
+				+ '&x1=' + $scope.file.coords.x
+				+ '&y1=' + $scope.file.coords.y
+				+ '&x2=' + $scope.file.coords.x2
+				+ '&y2=' + $scope.file.coords.y2, {
+				    headers: { 'Content-Type': 'multipart/form-data' },
+				    transformRequest: function (data) {
+				        var formData = new FormData();
+				        if (data) {
+				            formData.append(data.type, data);
+				        }
+				        return formData;
+				    },
+				}).success(function (data) {
+				    var parsed = JSON.parse(data);				    onSuccess(parsed);
+				}).error(onFail);
+		};
 	}
 
 }(angular));

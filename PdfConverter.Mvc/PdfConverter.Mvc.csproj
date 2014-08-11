@@ -222,6 +222,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\loader.gif" />
     <Content Include="index.html" />
+    <Content Include="webapp\project\dashboard\dashboard.html" />
     <Content Include="webapp\project\dashboard\pm.manage.dashboard.js" />
     <Content Include="Scripts\angular\angular-animate.js" />
     <Content Include="Scripts\angular\angular-animate.min.js" />
@@ -727,10 +728,11 @@
     <Content Include="Scripts\ref\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\ref\knockout-2.2.0.js" />
     <Content Include="Scripts\ref\modernizr-2.6.2.js" />
+    <Content Include="webapp\project\dashboard\scanner-template.html" />
     <Content Include="webapp\project\pm.manage.js" />
     <Content Include="webapp\common\layout\sidebar.html" />
     <Content Include="webapp\common\layout\topnav.html" />
-    <Content Include="webapp\project\dashboard\dashboard.html" />
+    <Content Include="webapp\project\dashboard\old.dashboard.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

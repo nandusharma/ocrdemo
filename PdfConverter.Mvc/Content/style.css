@@ -3,4 +3,27 @@
     font-size: 14px;
     line-height: 21px;
     font-weight: normal;
+    background: #ecf0f1;
+}
+
+header {
+    border-top: 5px solid #2c3e50;
+}
+
+.project-panel {
+    background: #bdc3c7;
+    min-height: 900px;
+    border-top: 2px solid #bdc3c7;
+}
+
+.document-panel {
+    background: #fff;
+    min-height: 900px;
+    border-top: 2px solid #bdc3c7;
+}
+
+.scan {
+    color: #333;
+    margin-left: 10px;
+    cursor: pointer;
 }
